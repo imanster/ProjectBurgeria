@@ -8,7 +8,6 @@ public class MouseClick : MonoBehaviour
     Vector3 GoToPosition = new Vector3(0,0,-1);
     private void OnMouseDown()
     {
-        Debug.Log("Mouse Down");
         this.GetComponent<Transform>().position = GoToPosition;
     }
 }
