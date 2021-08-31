@@ -11,31 +11,43 @@ public class MouseClick : MonoBehaviour
     GameObject IngredientManager;
 
     [SerializeField]
-    Sprite ChangeTo=null;
+    Sprite ChangeToSprite=null;
 
     [SerializeField]
     int IngredientNumber = 0;
 
-    bool clicked = false;
-
-    Ingredients pos;
-
+    Sprite InitialSprite;
+    bool Clicked = false;
+    Ingredients Ing;
+    Vector3 InitialPosition;
     private void Start()
     {
-        pos = IngredientManager.GetComponent<Ingredients>();
+        Ing = IngredientManager.GetComponent<Ingredients>();
+        InitialSprite = this.GetComponent<SpriteRenderer>().sprite;
+        InitialPosition = this.GetComponent<Transform>().position;
     }
 
     private void OnMouseDown()
     {
-        if(!clicked)
+        if(!Clicked)
         {
-            clicked = true;
-            this.GetComponent<Transform>().position = pos.CurrentPosition + Offset;
-            pos.AddIngredient(IngredientNumber);
-            if (ChangeTo != null)
+            Clicked = true;
+            this.GetComponent<Transform>().position = Ing.CurrentPosition + Offset;
+            Ing.AddIngredient(IngredientNumber);
+            if (ChangeToSprite != null)
             {
-                this.GetComponent<SpriteRenderer>().sprite = ChangeTo;
+                this.GetComponent<SpriteRenderer>().sprite = ChangeToSprite;
             }
         }
+    }
+
+    public void Reset()
+    {
+        this.GetComponent<Transform>().position = InitialPosition;
+        if (ChangeToSprite != null && Clicked)
+        {
+            this.GetComponent<SpriteRenderer>().sprite = InitialSprite;
+        }
+        Clicked = false;
     }
 }

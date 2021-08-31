@@ -23,4 +23,14 @@ public class Ingredients : MonoBehaviour
         if(IngredientNumber!=0)
             IngredientsAdded += (int)Mathf.Pow(2, IngredientNumber - 1);
     }
+
+    public void Reset()
+    {
+        foreach (Transform transform in this.transform)
+        {
+            transform.gameObject.GetComponent<MouseClick>().Reset();
+        }
+        CurrentPosition = StartPosition;
+        IngredientsAdded = 0;
+    }
 }

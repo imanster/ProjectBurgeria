@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
 
-    int Score;
+    public int Score;
 
     [SerializeField]
     int CorrectBonus=1, WrongPenalty=2;
@@ -18,11 +19,14 @@ public class Game : MonoBehaviour
     [SerializeField]
     GameObject IngredientManager;
 
+    Ingredients Ing;
+
     // Start is called before the first frame update
     void Start()
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         GenerateRandomOrder();
+        Ing = IngredientManager.GetComponent<Ingredients>();
     }
 
     void GenerateRandomOrder()
@@ -32,16 +36,17 @@ public class Game : MonoBehaviour
 
     public void Serve()
     {
-        int SandwichServed = IngredientManager.GetComponent<Ingredients>().IngredientsAdded;
+        int SandwichServed = Ing.IngredientsAdded;
         if (SandwichServed == Order)
             Score += CorrectBonus;
         else
             Score -= WrongPenalty;
         GenerateRandomOrder();
+        Ing.Reset();
     }
 
     public void Trash()
     {
-
+        Ing.Reset();
     }
 }
