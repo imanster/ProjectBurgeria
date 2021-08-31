@@ -26,9 +26,10 @@ public class Ingredients : MonoBehaviour
 
     public void Reset()
     {
-        foreach (Transform transform in this.transform)
+        MouseClick[] MClicks = this.GetComponentsInChildren<MouseClick>();
+        foreach (MouseClick MClick in MClicks)
         {
-            transform.gameObject.GetComponent<MouseClick>().Reset();
+            MClick.Reset();
         }
         CurrentPosition = StartPosition;
         IngredientsAdded = 0;
