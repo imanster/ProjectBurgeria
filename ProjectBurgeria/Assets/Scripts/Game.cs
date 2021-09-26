@@ -19,6 +19,9 @@ public class Game : MonoBehaviour
     [SerializeField]
     GameObject IngredientManager;
 
+    [SerializeField]
+    GameObject[] Icons;
+
     Ingredients Ing;
 
     // Start is called before the first frame update
@@ -32,6 +35,13 @@ public class Game : MonoBehaviour
     void GenerateRandomOrder()
     {
         Order = Random.Range(0, (int)Mathf.Pow(2, NumberOfIngredients));
+
+        int OrderCopy = Order;
+        for(int i=0; i<NumberOfIngredients; i++)
+        {
+            Icons[i].SetActive(OrderCopy % 2 == 1);
+            OrderCopy /= 2;
+        }
     }
 
     public void Serve()
