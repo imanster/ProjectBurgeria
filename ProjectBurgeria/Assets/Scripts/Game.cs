@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class Game : MonoBehaviour
     [SerializeField]
     GameObject[] Icons;
 
+    [SerializeField]
+    UnityEngine.UI.Text ScoreDisplay;
+
     Ingredients Ing;
 
     // Start is called before the first frame update
@@ -30,6 +34,7 @@ public class Game : MonoBehaviour
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         GenerateRandomOrder();
         Ing = IngredientManager.GetComponent<Ingredients>();
+        ScoreDisplay.text = "0";
     }
 
     void GenerateRandomOrder()
@@ -51,6 +56,7 @@ public class Game : MonoBehaviour
             Score += CorrectBonus;
         else
             Score -= WrongPenalty;
+        ScoreDisplay.text = Score.ToString();
         GenerateRandomOrder();
         Ing.Reset();
     }
