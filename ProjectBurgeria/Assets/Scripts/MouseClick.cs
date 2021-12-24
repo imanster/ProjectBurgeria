@@ -29,7 +29,7 @@ public class MouseClick : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if(!Clicked)
+        if(!Ing.TopBreadAdded && !Clicked)
         {
             Clicked = true;
             this.GetComponent<Transform>().position = Ing.CurrentPosition + Offset;

@@ -11,10 +11,13 @@ public class Ingredients : MonoBehaviour
 
     public int IngredientsAdded;
 
+    public bool TopBreadAdded;
+
     private void Start()
     {
         CurrentPosition = StartPosition;
         IngredientsAdded = 0;
+        TopBreadAdded = false;
     }
     public void AddIngredient(int IngredientNumber)
     {
@@ -26,6 +29,8 @@ public class Ingredients : MonoBehaviour
 
     public void Reset()
     {
+        //Taking all gameobjects/ingredients which can be added to sandwich (aka which have MouseClick Script)
+        // and calling the reset function in the script
         MouseClick[] MClicks = this.GetComponentsInChildren<MouseClick>();
         foreach (MouseClick MClick in MClicks)
         {
@@ -33,5 +38,6 @@ public class Ingredients : MonoBehaviour
         }
         CurrentPosition = StartPosition;
         IngredientsAdded = 0;
+        TopBreadAdded = false;
     }
 }

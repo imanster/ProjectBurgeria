@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 24893122}
   - component: {fileID: 24893124}
   - component: {fileID: 24893125}
+  - component: {fileID: 24893126}
   m_Layer: 0
   m_Name: Top Bread
   m_TagString: Untagged
@@ -250,6 +251,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7, y: 7}
   m_EdgeRadius: 0
+--- !u!114 &24893126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24893121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9291d0a64a3d1d44596ab9b4e864eabc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IngredientManager: {fileID: 1247113291}
 --- !u!1 &99321665
 GameObject:
   m_ObjectHideFlags: 0
@@ -2001,6 +2015,7 @@ MonoBehaviour:
   PositionChange: {x: 0, y: 0.35, z: -1}
   CurrentPosition: {x: 0, y: 0, z: 0}
   IngredientsAdded: 0
+  TopBreadAdded: 0
 --- !u!1 &1259012281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2376,6 +2391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   g: {fileID: 720765372}
+  IngredientManager: {fileID: 1247113291}
 --- !u!61 &1533916140
 BoxCollider2D:
   m_ObjectHideFlags: 0
